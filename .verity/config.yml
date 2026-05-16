@@ -1,43 +1,43 @@
 version: 1
 verity:
-  project_id: "c2725799-ad8c-4843-9a18-ce2866b85b92"
-  callback_url: "https://localhost:3001/api/callbacks/github-actions"
-  bootstrap_version: "v2"
+  project_id: c2725799-ad8c-4843-9a18-ce2866b85b92
+  callback_url: https://localhost:3001/api/callbacks/github-actions
+  bootstrap_version: v2
   max_generated_stories: 500
-
 commands:
-  setup: []
+  setup:
+  - cd frontend && npm ci
+  - cd backend && python -m pip install -r requirements.txt
   test: []
-  build: []
+  build:
+  - cd frontend && npm run build
   deploy: []
   test_groups:
     unit: []
     integration: []
     e2e: []
-
 automation:
   test_auto_fix:
     enabled: true
     max_attempts: 3
     post_merge_validation: true
     pr_triggers:
-      - "opened"
-      - "synchronize"
-      - "reopened"
+    - opened
+    - synchronize
+    - reopened
   e2e:
-    enabled: "auto"
+    enabled: auto
     command: []
-    start_command: ""
-    base_url: ""
-    base_url_env: "PLAYWRIGHT_BASE_URL"
+    start_command: ''
+    base_url: ''
+    base_url_env: PLAYWRIGHT_BASE_URL
     required_env: []
-
 policies:
   pr_review:
     enabled: true
-    label_required: "verity:agent"
+    label_required: verity:agent
   openai_guardrail:
     enabled: true
   documentation:
     auto_mode: true
-    handoff_file: "docs/AI_HANDOFF.md"
+    handoff_file: docs/AI_HANDOFF.md

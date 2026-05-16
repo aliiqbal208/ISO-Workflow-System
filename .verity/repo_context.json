@@ -1,0 +1,48 @@
+{
+  "detected_at": 1778961916,
+  "setup": [
+    "cd frontend && npm ci",
+    "cd backend && python -m pip install -r requirements.txt"
+  ],
+  "test": [],
+  "build": [
+    "cd frontend && npm run build"
+  ],
+  "deploy": [],
+  "test_groups": {
+    "unit": [],
+    "integration": [],
+    "e2e": []
+  },
+  "risk": {
+    "level": "full",
+    "requires_full_suite": false
+  },
+  "e2e": {
+    "detected": false,
+    "runnable": false,
+    "command": [],
+    "start_command": "",
+    "base_url": "",
+    "base_url_env": "PLAYWRIGHT_BASE_URL",
+    "required_env": [],
+    "missing_env": [],
+    "reason": "not_detected",
+    "project_path": ""
+  },
+  "auto_fix": {
+    "enabled": true,
+    "max_attempts": 3,
+    "post_merge_validation": true,
+    "pr_triggers": [
+      "opened",
+      "synchronize",
+      "reopened"
+    ]
+  },
+  "notes": [
+    "Detected React project at frontend.",
+    "Detected Python project at backend.",
+    "No runnable test commands detected. Configure .verity/config.yml manually."
+  ]
+}
